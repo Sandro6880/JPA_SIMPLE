@@ -21,6 +21,7 @@ public class Demo {
         for (Person p : result){
             System.out.println(p.getsSSN() + ": " + p.getFirstName() + " " + p.getLastName());
         }
+
         insertAddress(em,result.get(1));
         List<Person> result2 = getPersonList(em);
         em.close();
