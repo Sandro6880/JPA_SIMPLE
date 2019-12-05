@@ -4,22 +4,19 @@ import javax.persistence.*;
 
 @Entity
 public class Address {
+
     @EmbeddedId
-    private AddressID id;
+    private AddressId id;
     private String country;
     private String city;
-    private String Street;
-    private short StreetNo;
+    private String street;
+    private short streetNo;
 
-    @ManyToOne()
-    @JoinColumn(name = "SSN",insertable = false,updatable = false)
-    private Person person;
-
-    public AddressID getId() {
+    public AddressId getId() {
         return id;
     }
 
-    public void setId(AddressID id) {
+    public void setId(AddressId id) {
         this.id = id;
     }
 
@@ -40,26 +37,18 @@ public class Address {
     }
 
     public String getStreet() {
-        return Street;
+        return street;
     }
 
     public void setStreet(String street) {
-        Street = street;
+        this.street = street;
     }
 
     public short getStreetNo() {
-        return StreetNo;
+        return streetNo;
     }
 
     public void setStreetNo(short streetNo) {
-        StreetNo = streetNo;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
+        this.streetNo = streetNo;
     }
 }

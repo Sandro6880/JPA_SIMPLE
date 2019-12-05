@@ -1,9 +1,10 @@
 package demo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Person {
@@ -16,10 +17,17 @@ public class Person {
     private Double awesomeness;
     private BigDecimal wealth;
 
+    @OneToMany(mappedBy = "id.person", cascade = CascadeType.PERSIST)
+    private List<Address> addresses = new ArrayList<>();
 
-    public Double getAwesomeness() {
-        return awesomeness;
+    public List<Address> getAddresses() {
+        return addresses;
     }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
     public String getsSSN() {
         return SSN;
     }
@@ -60,6 +68,13 @@ public class Person {
         isAwesome = awesome;
     }
 
+    public Double getAwesomeness() {
+        return awesomeness;
+    }
+
+    public void setAwesomeness(Double awesomeness) {
+        this.awesomeness = awesomeness;
+    }
 
     public BigDecimal getWealth() {
         return wealth;
@@ -68,11 +83,4 @@ public class Person {
     public void setWealth(BigDecimal wealth) {
         this.wealth = wealth;
     }
-
-
-    public void setAwesomeness(Double awesomeness) {
-        this.awesomeness = awesomeness;
-    }
-
 }
-
