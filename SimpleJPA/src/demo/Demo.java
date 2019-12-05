@@ -33,7 +33,9 @@ public class Demo {
         for (AwesomePeopleCount apc : result2){
             System.out.println(apc.isAwesome() + ": " + apc.getCount());
         }*/
-        insertProduct(em);
+        //insertProduct(em);
+        insertOrder(em);
+
         em.close();
         factory.close();
     }
@@ -71,6 +73,17 @@ public class Demo {
 
         em.persist(newProduct);
         em.persist(newProduct2);
+        em.getTransaction().commit();
+    }
+    private static void insertOrder(EntityManager em ){
+        em.getTransaction().begin();
+        OrderW newOrder = new OrderW(
+                "5555050672"
+                ,(short)1
+                ,Date.valueOf(LocalDate.of(2020,5,29))
+                ,(short)1);
+
+        em.persist(newOrder);
         em.getTransaction().commit();
     }
 }

@@ -1,11 +1,14 @@
 package demo;
 
+import org.hibernate.annotations.Table;
+import org.jetbrains.annotations.Contract;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
 
 @Entity
-public class Order {
+public class OrderW {
 
     @Id
     private int id;
@@ -13,11 +16,13 @@ public class Order {
     private short address_no;
     private Date order_date;
 
-    public Order() {
+    @Contract(pure = true)
+    public OrderW() {
 
     }
 
-    public Order(String ssn, short address_no, Date order_date, short order_state) {
+    @Contract(pure = true)
+    public OrderW(String ssn, short address_no, Date order_date, short order_state) {
         this.ssn = ssn;
         this.address_no = address_no;
         this.order_date = order_date;
