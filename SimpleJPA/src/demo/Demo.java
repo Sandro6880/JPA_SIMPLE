@@ -34,8 +34,8 @@ public class Demo {
             System.out.println(apc.isAwesome() + ": " + apc.getCount());
         }*/
         //insertProduct(em);
-        insertOrder(em);
-
+        //insertOrder(em);
+        insertOrderItems(em);
         em.close();
         factory.close();
     }
@@ -78,7 +78,7 @@ public class Demo {
     private static void insertOrder(EntityManager em ){
         em.getTransaction().begin();
         OrderW newOrder = new OrderW(
-                "5555050672"
+                "4321020290"
                 ,(short)1
                 ,Date.valueOf(LocalDate.of(2020,5,29))
                 ,(short)1);
@@ -86,4 +86,13 @@ public class Demo {
         em.persist(newOrder);
         em.getTransaction().commit();
     }
+    private static void insertOrderItems(EntityManager em ){
+        em.getTransaction().begin();
+        OrderItems newOrderItems = new OrderItems(1,1,100);
+        OrderItems newOrderItems2 = new OrderItems(1,2,10000);
+        em.persist(newOrderItems);
+        em.persist(newOrderItems2);
+        em.getTransaction().commit();
+    }
+
 }

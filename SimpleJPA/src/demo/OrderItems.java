@@ -1,16 +1,21 @@
 package demo;
 
+import org.jetbrains.annotations.Contract;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class OrderItems {
+public class OrderItems implements Serializable {
 
     @Id
     private int order_id;
+    @Id
     private int product_id;
     private int amount;
 
+    @Contract(pure = true)
     public OrderItems(int order_id, int product_id, int amount) {
         this.order_id = order_id;
         this.product_id = product_id;
