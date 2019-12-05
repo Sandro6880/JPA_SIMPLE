@@ -9,7 +9,9 @@
           <factory-entry name="NewPersistenceUnit" />
           <factory-entry name="PersonPU" value="d7e4db92-fcfb-47ee-bdaa-db484c956bfe" />
         </datasource-mapping>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="PersonPU" />
+        </naming-strategy-map>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />
       </configuration>
     </facet>

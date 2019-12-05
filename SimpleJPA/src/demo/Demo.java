@@ -35,7 +35,23 @@ public class Demo {
         }*/
         //insertProduct(em);
         //insertOrder(em);
-        insertOrderItems(em);
+        //insertOrderItems(em);
+        Query queryHw = em.createQuery(
+                "select oi.amount, sum(oi.amount*p.price),pe.firstName " +
+                "from OrderW o " +
+                "join OrderItems oi on (oi.order_id = o.id) " +
+                "join Product p on (p.product_id = oi.product_id) " +
+                "join Person pe on (pe.id = o.ssn)" +
+                " group by oi.amount,pe.firstName");
+
+
+
+        List<String> result1 = queryHw.getResultList();
+        for (String city : result1){
+            System.out.println(city);
+        }
+
+
         em.close();
         factory.close();
     }

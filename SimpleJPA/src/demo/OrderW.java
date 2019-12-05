@@ -2,7 +2,7 @@ package demo;
 
 import org.hibernate.annotations.Table;
 import org.jetbrains.annotations.Contract;
-
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
@@ -10,7 +10,7 @@ import java.sql.Date;
 @Entity
 public class OrderW {
 
-    @Id
+    @Id @GeneratedValue
     private int id;
     private String ssn;
     private short address_no;

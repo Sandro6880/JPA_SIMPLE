@@ -1,7 +1,7 @@
 package demo;
 
 import org.jetbrains.annotations.Contract;
-
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
