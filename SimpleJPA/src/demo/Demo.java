@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -16,7 +17,7 @@ public class Demo {
 
         //insertPerson(em);
 
-        Query query = em.createQuery("select p from Person p");
+        /*Query query = em.createQuery("select p from Person p");
         List<Person> result = query.getResultList();
         for (Person p : result){
             System.out.println(p.getsSSN() + ": " + p.getFirstName() + " " + p.getLastName());
@@ -31,8 +32,8 @@ public class Demo {
         List<AwesomePeopleCount> result2 = query2.getResultList();
         for (AwesomePeopleCount apc : result2){
             System.out.println(apc.isAwesome() + ": " + apc.getCount());
-        }
-
+        }*/
+        insertProduct(em);
         em.close();
         factory.close();
     }
@@ -60,6 +61,16 @@ public class Demo {
         newPerson.getAddresses().add(newAddress);
 
         em.persist(newPerson);
+        em.getTransaction().commit();
+    }
+    private static void insertProduct(EntityManager em ){
+        em.getTransaction().begin();
+
+        Product newProduct = new Product(1,"Most Awesome Nerf Gun EVER!", BigDecimal.valueOf(100));
+        Product newProduct2 = new Product(2,"Most Useless Nerf Gun EVER!", BigDecimal.valueOf(10000));
+
+        em.persist(newProduct);
+        em.persist(newProduct2);
         em.getTransaction().commit();
     }
 }
