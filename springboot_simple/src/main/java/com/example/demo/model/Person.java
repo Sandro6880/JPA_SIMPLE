@@ -1,57 +1,79 @@
-package com.example.demo.model;
+package com.example.demo.model.data;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Person {
-    private final String SSN;
-    private final LocalDate dateOfBirth;
-    private final String firstName;
-    private final String lastName;
-    private final boolean isAwesome;
-    private final float awesomeness;
-    private final BigDecimal wealth;
+@Entity
+public class Person extends EntityBase {
+    @Id
+    private String SSN;
+    private LocalDate dateOfBirth;
+    private String firstName;
+    private String lastName;
+    private boolean isAwesome;
+    private float awesomeness;
+    private BigDecimal wealth;
+    public Person(){
 
-    public Person(@JsonProperty("SSN") String ssn, @JsonProperty("dateOfBirth") LocalDate dateOfBirth,
-                  @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName,
-                  @JsonProperty("isAwesome") boolean isAwesome, @JsonProperty("awesomeness") float awesomeness,
-                  @JsonProperty("wealth") BigDecimal wealth) {
-        this.SSN = ssn;
-        this.dateOfBirth = dateOfBirth;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.isAwesome = isAwesome;
-        this.awesomeness = awesomeness;
-        this.wealth = wealth;
     }
+
+    public Person(String ssn, LocalDate date_of_birth, String first_name, String last_name, boolean is_awesome, float awesomeness, BigDecimal wealth){}
 
     public String getSSN() {
         return SSN;
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN = SSN;
     }
 
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public String getFirstName() {
         return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public boolean isAwesome() {
         return isAwesome;
+    }
+
+    public void setAwesome(boolean awesome) {
+        isAwesome = awesome;
     }
 
     public float getAwesomeness() {
         return awesomeness;
     }
 
+    public void setAwesomeness(float awesomeness) {
+        this.awesomeness = awesomeness;
+    }
+
     public BigDecimal getWealth() {
         return wealth;
+    }
+
+    public void setWealth(BigDecimal wealth) {
+        this.wealth = wealth;
     }
 }

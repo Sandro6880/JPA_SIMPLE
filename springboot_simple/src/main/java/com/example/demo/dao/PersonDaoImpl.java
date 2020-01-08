@@ -1,6 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.model.Person;
+import com.example.demo.model.data.Person; // --> JAVA WAS ZUM ?!?!? WARUM DATA WARUM
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
