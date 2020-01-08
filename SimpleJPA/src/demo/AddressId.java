@@ -10,7 +10,7 @@ public class AddressId implements Serializable {
     private short addressNo;
 
     @ManyToOne
-    //@JoinColumn( name = "ssn")
+    @JoinColumn( name = "ssn")
     private Person person;
 
     public short getAddressNo() {
